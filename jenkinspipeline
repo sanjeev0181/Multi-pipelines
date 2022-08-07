@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('checkout'){
+            steps{
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/sanjeev0181/java-web-app-dockers.git'
+            }
+        }
+        stage('Build Maven'){
+            steps {
+                sh 'mvn clean'
+            }
+        }
+    }
+}
